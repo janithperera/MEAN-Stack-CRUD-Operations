@@ -44,9 +44,9 @@ User.pre('save', function (next){
     }
 });
 
-User.methods.comparePassword = (passw, cb) => {
-    bcrypt.compare(passw, this.pword, (err, isMatch) => {
-        if (err) {
+User.methods.comparePassword = function(passw, cb){
+    bcrypt.compare(passw, this.pword, function(err, isMatch){
+        if (err){
             return cb(err);
         }
         cb(null, isMatch);
