@@ -9,7 +9,8 @@ var Controller = function() {
                 fname: data.fname,
                 lname: data.lname,
                 uname: data.uname,
-                pword: data.pword
+                pword: data.pword,
+                role:data.role
             });
             nuser.save().then(() => {
                 resolve({status: 200, message: 'User creation successfull!'});

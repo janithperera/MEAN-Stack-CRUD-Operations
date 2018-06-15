@@ -21,6 +21,14 @@ var User = new Schema({
     pword: {
         type: String,
         required: true
+    },
+    role:{
+        type:String,
+        required:true
+    },
+    active:{
+        type:Boolean,
+        default:true
     }
 });
 
@@ -43,6 +51,8 @@ User.pre('save', function (next){
         return next();
     }
 });
+
+
 
 User.methods.comparePassword = function(passw, cb){
     bcrypt.compare(passw, this.pword, function(err, isMatch){

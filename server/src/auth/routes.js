@@ -5,6 +5,7 @@ const express = require('express');
 const token = require('jsonwebtoken');
 
 const User = require('./controller');
+const Admin=require('./Admin/adminController');
 const UserSchema = require('../../src/database/models/user');
 const Settings = require('../config/settings');
 
@@ -40,5 +41,50 @@ Router.post('/login', (req, res) => {
         }
     });
 });
+
+Router.put('/admin/role/:id', (req, res) => {
+
+    Admin.updateRole(req.params.id,req.body).then(data=>{
+        return res.status(data.status).json({success: true, msg: data.message});
+    }).catch(err=>{
+        return res.status(err.status).json({success: false, msg: err.message});
+    });
+   
+});
+
+Router.delete('/admin/user/:id', (req, res) => {
+
+    Admin.deleteUser(req.params.id).then(data=>{
+        return res.status(data.status).json({success: true, msg: data.message});
+    }).catch(err=>{
+        return res.status(err.status).json({success: false, msg: err.message});
+    });
+   
+});
+
+Router.put('/admin/user/deactivate/:id', (req, res) => {
+
+    Admin.deactivateUser(req.params.id).then(data=>{
+        return res.status(data.status).json({success: true, msg: data.message});
+    }).catch(err=>{
+        return res.status(err.status).json({success: false, msg: err.message});
+    });
+   
+});
+
+Router.put('/admin/pwd/:id', (req, res) => {
+
+    Admin.updateUserPWD(req.params.id,req.body).then(data=>{
+        return res.status(data.status).json({success: true, msg: data.message});
+    }).catch(err=>{
+        return res.status(err.status).json({success: false, msg: err.message});
+    });
+   
+});
+
+
+
+
+
 
 module.exports = Router;
