@@ -9,7 +9,6 @@ const App = () => (
     <Navbar />
     <div className="container">
       <Main />
-      <Table />
     </div>
   </div>
 )

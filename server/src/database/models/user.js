@@ -22,19 +22,13 @@ var User = new Schema({
         type: String,
         required: true
     },
-<<<<<<< HEAD
-    role:{
-        type:String,
-        required:true
-    },
-    active:{
-        type:Boolean,
-        default:true
-=======
-    utype: {
+    role: {
         type: String,
         required: true
->>>>>>> 9677e33c586929daa32aa7bd87183c7cad6bae37
+    },
+    active: {
+        type: Boolean,
+        default: true
     }
 });
 
