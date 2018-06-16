@@ -4,8 +4,8 @@ import Axios from 'axios';
 
 
 class AssignDepartments extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             doctors: [],
             nurse: [],
@@ -13,6 +13,7 @@ class AssignDepartments extends Component {
             pharmist: [],
             generalStaff: [],
             departments: [],
+            employees: [],
             selectedValue: "",
             selectedValues: ""
         }
@@ -40,11 +41,10 @@ class AssignDepartments extends Component {
         Axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
 
         Axios.get('http://localhost:8081/employee').then(function (data) {
-            console.log(data);
-            this.setState({ doctors: data.data });
+            this.setState({ employees: data });
         }.bind(this))
 
-        Axios.get('http://localhost:8081/employee').then(function (data) {
+        /*Axios.get('http://localhost:8081/employee').then(function (data) {
             this.setState({ nurse: data.data });
         }.bind(this))
 
@@ -58,21 +58,17 @@ class AssignDepartments extends Component {
 
         Axios.get('http://localhost:8081/employee').then(function (data) {
             this.setState({ pharmist: data.data });
-        }.bind(this))
-
-        Axios.put('http://localhost:8081/employee', ).then(function (data) {
-            this.setState({ pharmist: data.data });
-        }.bind(this))
+        }.bind(this))*/
 
 
     }
     render() {
-        let doctorList = this.state.doctors.map(function (item, i) {
+        let doctorList = this.state.employees.map(function (item, i) {
             return <option key={i}><a href="#">{item.fname + " " + item.lname}</a></option>
         })
 
 
-        let nurseList = this.state.nurse.map(function (item, i) {
+        /*let nurseList = this.state.nurse.map(function (item, i) {
             return <option key={i}><a href="#">{item.fname + " " + item.lname}</a></option>
         })
 
@@ -86,7 +82,7 @@ class AssignDepartments extends Component {
 
         let pharnacylList = this.state.pharmist.map(function (item, i) {
             return <option key={i}><a href="#">{item.fname + " " + item.lname}</a></option>
-        })
+        })*/
 
 
         return (
@@ -101,28 +97,28 @@ class AssignDepartments extends Component {
                         <select className="browser-default" onChange={this.setValue}>
                             <option active >Default</option>
 
-                            {nurseList}
+                            {doctorList}
                         </select>
                         <br /><br /><br />
 
                         <select className="browser-default" onChange={this.setValue}>
                             <option active >Default</option>
 
-                            {mitList}
+                            {doctorList}
                         </select>
 
                         <br /><br /><br />
                         <select className="browser-default" onChange={this.setValue}>
                             <option active >Default</option>
 
-                            {generalList}
+                            {doctorList}
                         </select>
 
                         <br /><br /><br />
 
                         <select className="browser-default" onChange={this.setValue}>
                             <option active >Default</option>
-                            {pharnacylList}
+                            {doctorList}
                         </select>
 
                     </div>

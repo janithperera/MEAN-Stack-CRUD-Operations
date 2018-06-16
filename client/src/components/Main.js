@@ -6,6 +6,9 @@ import Login from './Login';
 import Register from './Register';
 import AssignDep from './AssignDepartments';
 import AssignDepartments from './AssignDepartments';
+import AddEmp from './AddEmp';
+import Employee from './Employees';
+import EmployeeD from './EmployeeDetails';
 
 const Main = () => (
     <main>
@@ -15,6 +18,9 @@ const Main = () => (
             <Route exact path='/login' component= { Login } />
             <Route exact path='/register' component= { Register } />
             <Route exact path='/assigndep' component= { AssignDepartments } />
+            <Route exact path='/employee/new' component= { AddEmp } />
+            <Route exact path='/employee' component= { Employee } />
+            <Route exact path='/employee/edit/:id' component= { EmployeeD } />
         </Switch>
     </main>
 )

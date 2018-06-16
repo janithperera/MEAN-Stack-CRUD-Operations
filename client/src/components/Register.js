@@ -57,13 +57,13 @@ class Register extends Component {
                     </div>
                     <div className="row">
                         <div className="input-field">
-                            <input id="password" type="text" className="validate" name="pword" value={pword} onChange={this.onChange} required />
+                            <input id="password" type="password" className="validate" name="pword" value={pword} onChange={this.onChange} required />
                             <label for="password">Password</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field">
-                            <input id="cassword" type="text" className="validate" />
+                            <input id="cassword" type="password" className="validate" />
                             <label for="cpassword">Confirm password</label>
                         </div>
                     </div>

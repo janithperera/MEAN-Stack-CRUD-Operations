@@ -42,7 +42,7 @@ var EmployeeController  = function () {
 
     this.search = (id) => {
         return new Promise((resolve, reject) => {
-            Employee.find({_id: id}).exec().then(data => {
+            Employee.findOne({_id: id}).exec().then(data => {
                 resolve({status: 200, data: data});
             }).catch(err => {
                 reject({status: 500, message: "Error: " + err});
