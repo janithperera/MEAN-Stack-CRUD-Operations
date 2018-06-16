@@ -21,6 +21,10 @@ var User = new Schema({
     pword: {
         type: String,
         required: true
+    },
+    utype: {
+        type: String,
+        required: true
     }
 });
 
