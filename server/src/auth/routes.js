@@ -83,6 +83,16 @@ Router.put('/admin/pwd/:id', (req, res) => {
 });
 
 
+Router.get('/users', (req, res) => {
+    User.getAllUserData().then(data => {
+        return res.status(data.status).json({success: true, data: data.data});
+    }).catch(err => {
+        return res.status(err.status).json({success: false, message: err.message});
+    })
+});
+
+
+
 
 
 

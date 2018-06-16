@@ -19,6 +19,17 @@ var Controller = function() {
             })
         });
     }
+
+    this.getAllUserData = () => {
+        return new Promise((resolve, reject) => {
+           
+            User.find({},{_id:0,pword:0,role:0}).exec().then((data) => {
+                resolve({status: 200, data: data});
+            }).catch((err) => {
+                reject({status: 500, message: 'Data not found' + err});
+            })
+        });
+    }
 }
 
 module.exports = new Controller();
