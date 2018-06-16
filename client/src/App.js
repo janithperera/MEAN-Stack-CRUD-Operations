@@ -7,7 +7,7 @@ import Table from './components/Table';
 const App = () => (
   <div>
     <Navbar />
-    <div className='container'>
+    <div className="container">
       <Main />
       <Table />
     </div>

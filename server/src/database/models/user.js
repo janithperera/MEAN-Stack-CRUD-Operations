@@ -22,6 +22,7 @@ var User = new Schema({
         type: String,
         required: true
     },
+<<<<<<< HEAD
     role:{
         type:String,
         required:true
@@ -29,6 +30,11 @@ var User = new Schema({
     active:{
         type:Boolean,
         default:true
+=======
+    utype: {
+        type: String,
+        required: true
+>>>>>>> 9677e33c586929daa32aa7bd87183c7cad6bae37
     }
 });
 
