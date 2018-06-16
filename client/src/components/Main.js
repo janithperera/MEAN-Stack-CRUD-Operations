@@ -4,6 +4,8 @@ import Home from  './Home';
 import About from './About';
 import Login from './Login';
 import Register from './Register';
+import AssignDep from './AssignDepartments';
+import AssignDepartments from './AssignDepartments';
 
 const Main = () => (
     <main>
@@ -12,6 +14,7 @@ const Main = () => (
             <Route exact path='/about' component= { About } />
             <Route exact path='/login' component= { Login } />
             <Route exact path='/register' component= { Register } />
+            <Route exact path='/assigndep' component= { AssignDepartments } />
         </Switch>
     </main>
 )

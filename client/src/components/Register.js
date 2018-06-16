@@ -41,7 +41,7 @@ class Register extends Component {
 
                     <div className="row">
                         <label>Browser Select</label>
-                        <select class="browser-default" ref='utype'>
+                        <select className="browser-default" ref='utype'>
                             <option value="" disabled selected>Choose your option</option>
                             <option value="1">Administrator</option>
                             <option value="2">Standard user</option>
@@ -50,7 +50,7 @@ class Register extends Component {
 
                     <div className="row">
                         <div className="input-field">
-                            <a class="waves-effect waves-light btn-large col s12">Register</a>
+                            <a className="waves-effect waves-light btn-large col s12">Register</a>
                         </div>
                     </div>
 
