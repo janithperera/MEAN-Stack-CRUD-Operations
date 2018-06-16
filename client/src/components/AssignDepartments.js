@@ -37,27 +37,30 @@ class AssignDepartments extends Component {
     }
 
     componentWillMount() {
-        Axios.get('http://localhost:8000/doctor').then(function (data) {
+        Axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
+
+        Axios.get('http://localhost:8081/employee').then(function (data) {
+            console.log(data);
             this.setState({ doctors: data.data });
         }.bind(this))
 
-        Axios.get('http://localhost:8000/nurse').then(function (data) {
+        Axios.get('http://localhost:8081/employee').then(function (data) {
             this.setState({ nurse: data.data });
         }.bind(this))
 
-        Axios.get('http://localhost:8000/mlt').then(function (data) {
+        Axios.get('http://localhost:8081/employee').then(function (data) {
             this.setState({ MLT: data.data });
         }.bind(this))
 
-        Axios.get('http://localhost:8000/generalstaff').then(function (data) {
+        Axios.get('http://localhost:8081/employee').then(function (data) {
             this.setState({ generalStaff: data.data });
         }.bind(this))
 
-        Axios.get('http://localhost:8000/pharmacist').then(function (data) {
+        Axios.get('http://localhost:8081/employee').then(function (data) {
             this.setState({ pharmist: data.data });
         }.bind(this))
 
-        Axios.put('http://localhost:8000/pharmacist', ).then(function (data) {
+        Axios.put('http://localhost:8081/employee', ).then(function (data) {
             this.setState({ pharmist: data.data });
         }.bind(this))
 
@@ -65,24 +68,24 @@ class AssignDepartments extends Component {
     }
     render() {
         let doctorList = this.state.doctors.map(function (item, i) {
-            return <option key={i}><a href="#">{item.FirstName + " " + item.LastName}</a></option>
+            return <option key={i}><a href="#">{item.fname + " " + item.lname}</a></option>
         })
 
 
         let nurseList = this.state.nurse.map(function (item, i) {
-            return <option key={i}><a href="#">{item.FirstName + " " + item.LastName}</a></option>
+            return <option key={i}><a href="#">{item.fname + " " + item.lname}</a></option>
         })
 
         let mitList = this.state.MLT.map(function (item, i) {
-            return <option key={i}><a href="#">{item.FirstName + " " + item.LastName}</a></option>
+            return <option key={i}><a href="#">{item.fname + " " + item.lname}</a></option>
         })
 
         let generalList = this.state.generalStaff.map(function (item, i) {
-            return <option key={i}><a href="#">{item.FirstName + " " + item.LastName}</a></option>
+            return <option key={i}><a href="#">{item.fname + " " + item.lname}</a></option>
         })
 
         let pharnacylList = this.state.pharmist.map(function (item, i) {
-            return <option key={i}><a href="#">{item.FirstName + " " + item.LastName}</a></option>
+            return <option key={i}><a href="#">{item.fname + " " + item.lname}</a></option>
         })
 
 
