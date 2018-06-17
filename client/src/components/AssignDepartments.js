@@ -4,8 +4,8 @@ import Axios from 'axios';
 
 
 class AssignDepartments extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             doctors: [],
             nurse: [],
@@ -13,7 +13,6 @@ class AssignDepartments extends Component {
             pharmist: [],
             generalStaff: [],
             departments: [],
-            employees: [],
             selectedValue: "",
             selectedValues: ""
         }
@@ -41,89 +40,98 @@ class AssignDepartments extends Component {
         Axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
 
         Axios.get('http://localhost:8081/employee').then(function (data) {
-            this.setState({ employees: data });
-        }.bind(this))
-
-        /*Axios.get('http://localhost:8081/employee').then(function (data) {
-            this.setState({ nurse: data.data });
+            console.log(data);
+            this.setState({ doctors: data.data.data });
         }.bind(this))
 
         Axios.get('http://localhost:8081/employee').then(function (data) {
-            this.setState({ MLT: data.data });
+            this.setState({ nurse: data.data.data });
         }.bind(this))
 
         Axios.get('http://localhost:8081/employee').then(function (data) {
-            this.setState({ generalStaff: data.data });
+            this.setState({ MLT: data.data.data });
         }.bind(this))
 
         Axios.get('http://localhost:8081/employee').then(function (data) {
-            this.setState({ pharmist: data.data });
-        }.bind(this))*/
+            this.setState({ generalStaff: data.data.data });
+        }.bind(this))
+
+        Axios.get('http://localhost:8081/employee').then(function (data) {
+            this.setState({ pharmist: data.data.data });
+        }.bind(this))
+
+
 
 
     }
     render() {
-        let doctorList = this.state.employees.map(function (item, i) {
+
+        let doctorList = this.state.doctors.map(function (item, i) {
             return <option key={i}><a href="#">{item.fname + " " + item.lname}</a></option>
-        })
+        }.bind(this))
 
 
-        /*let nurseList = this.state.nurse.map(function (item, i) {
+        let nurseList = this.state.nurse.map(function (item, i) {
             return <option key={i}><a href="#">{item.fname + " " + item.lname}</a></option>
-        })
+        }.bind(this))
 
         let mitList = this.state.MLT.map(function (item, i) {
             return <option key={i}><a href="#">{item.fname + " " + item.lname}</a></option>
-        })
+        }.bind(this))
 
         let generalList = this.state.generalStaff.map(function (item, i) {
             return <option key={i}><a href="#">{item.fname + " " + item.lname}</a></option>
-        })
+        }.bind(this))
 
         let pharnacylList = this.state.pharmist.map(function (item, i) {
             return <option key={i}><a href="#">{item.fname + " " + item.lname}</a></option>
-        })*/
+        }.bind(this))
 
 
         return (
             <div className="container">
                 <div>
                     <div className="inline-block col-sm-5">
-                        <select className="browser-default" onChange={this.setValue}>
+
+                        <h3>Assign Employee for Departments</h3>
+                        <label>Doctor</label>
+                        <select className="browser-default col-sm-2" onChange={this.setValue}>
                             <option active >Default</option>
                             {doctorList}
                         </select>
                         <br /><br /><br />
-                        <select className="browser-default" onChange={this.setValue}>
+                        <label>Nurse</label>
+                        <select className="browser-default col-sm-2" onChange={this.setValue}>
                             <option active >Default</option>
 
-                            {doctorList}
+                            {nurseList}
                         </select>
                         <br /><br /><br />
 
-                        <select className="browser-default" onChange={this.setValue}>
+                        <label>MLT</label>
+                        <select className="browser-default col-sm-2" onChange={this.setValue}>
                             <option active >Default</option>
 
-                            {doctorList}
+                            {mitList}
                         </select>
 
                         <br /><br /><br />
-                        <select className="browser-default" onChange={this.setValue}>
+                        <label>General staff</label>
+                        <select className="browser-default col-sm-2" onChange={this.setValue}>
                             <option active >Default</option>
 
-                            {doctorList}
+                            {generalList}
                         </select>
 
                         <br /><br /><br />
-
-                        <select className="browser-default" onChange={this.setValue}>
+                        <label>Pharmacist</label>
+                        <select className="browser-default col-sm-2" onChange={this.setValue}>
                             <option active >Default</option>
-                            {doctorList}
-                        </select>
+                            {pharnacylList}
+                        </select><br /><br /><br /><br />
 
-                    </div>
-                    <div className="inline-block col-sm-4">
-                        <select className="browser-default" onChange={this.setValues}>
+                        <label>Departments</label>
+                        <select className="browser-default col-sm-2" onChange={this.setValues}>
                             <option active >Default</option>
 
                             <option>OPD</option>
@@ -134,6 +142,18 @@ class AssignDepartments extends Component {
                         <button type="button" class="btn btn-success col-sm-4 " onClick={this.getData.bind(this)}>Assign</button>
 
                     </div>
+                    {/* <div className="inline-block col-sm-4">
+                        <select className="browser-default col-sm-2" onChange={this.setValues}>
+                            <option active >Default</option>
+
+                            <option>OPD</option>
+                            <option>HR</option>
+                            <option>Laboratory</option>
+
+                        </select><br /><br /><br /><br /><br />
+                        <button type="button" class="btn btn-success col-sm-4 " onClick={this.getData.bind(this)}>Assign</button>
+
+                    </div> */}
 
                 </div>
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './style/Login.css'
 
@@ -26,7 +27,7 @@ class Login extends Component {
             .then((result) => {
                 localStorage.setItem('jwtToken', result.data.token);
                 this.setState({ message: '' });
-                this.props.history.push('/')
+                this.props.history.push('/home')
             })
             .catch((error) => {
                 if (error.response.status === 401) {
@@ -63,9 +64,12 @@ class Login extends Component {
                         </div>
 
                         <div className="row">
-                            <div className="input-field">
-                                <button class="btn" type="submit">Login</button>
-                            </div>
+                                <button className="btn col s12" type="submit">Login</button>
+                        </div>
+                        <div className="row">
+                                <div className="input-field">
+                                    <Link to='/register' class="btn">Register</Link>
+                                </div>
                         </div>
                     </div>
                 </form>

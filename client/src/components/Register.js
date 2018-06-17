@@ -26,7 +26,7 @@ class Register extends Component {
 
         axios.post('http://localhost:8081/auth/register', { fname, lname, uname, pword, role })
             .then((result) => {
-                this.props.history.push("/login")
+                this.props.history.push("/")
             });
     }
 

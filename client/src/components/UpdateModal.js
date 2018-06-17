@@ -29,11 +29,9 @@ class UpdateModal extends Component{
                         <div className="form-group">
                             <label for="select-text" className="col-form-label">Role Reset</label>
                             <select className="form-control" id="exampleFormControlSelect1">
-                                <option value="MLT">MLT</option>
-                                <option value="Docotor">Doctor</option>
-                                <option value="Nurse">Nurse</option>
-                                <option value="Pharmacist">Pharmacist</option>
-                                <option value="Staff">Staff</option>
+                                <option value="1">Admin</option>
+                                <option value="2">Staff</option>
+                                
                             </select>
                         </div>
                     </form>

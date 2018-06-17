@@ -22,7 +22,7 @@ class EmployeeDetails extends Component {
             .then(data => {
                 this.setState({
                     details: data.data.data
-                    
+
                 }, () => {
                     console.log(this.state.details.fname);
                 });
@@ -33,7 +33,7 @@ class EmployeeDetails extends Component {
 
     onDelete() {
         let employeeID = this.props.match.params.id;
-        axios.delete(`http://localhost:8081/employee/${employeeID}`)
+        axios.delete(`http://localhost:8081/employee/${this.state.details._id}`)
             .then(data => {
                 this.props.history.push('/employee');
             }).catch(err => {
@@ -41,7 +41,7 @@ class EmployeeDetails extends Component {
             })
     }
 
-    editEmployee(emp){
+    editEmployee(emp) {
         axios.request({
             method: 'put',
             url: `http://localhost:8081/employee/${this.state.details._id}`,
@@ -67,7 +67,7 @@ class EmployeeDetails extends Component {
         e.preventDefault();
     }
 
-    handleInputChange(e){
+    handleInputChange(e) {
         const target = e.target;
         const value = target.value;
         const name = target.name;
@@ -129,7 +129,10 @@ class EmployeeDetails extends Component {
 
                         <div className="row">
                             <div className="input-field">
-                            <input type="submit" value="Save" className="btn btn-primary"/>
+                                <input type="submit" value="Save" className="btn btn-primary" />
+                            </div>
+                            <div className="input-field">
+                                <button className='btn btn-danger' onClick={this.onDelete.bind(this)}>DELETE</button>
                             </div>
                         </div>
                     </form>
